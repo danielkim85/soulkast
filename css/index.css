@@ -1,0 +1,31 @@
+html { 
+    width:100%; 
+    height:100%; 
+    background:url(../img/index.png) center center no-repeat;
+    font-family: 'Indie Flower', cursive !important;
+}
+h1,h2,h3{
+    font-family: 'Indie Flower', cursive !important;
+    font-weight:bold !important;
+}
+#main_outer{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+    margin-bottom:20px;
+}
+#main{
+    width:330px;
+    margin:0px auto;
+}
+.play-box{
+    width:300px;
+}
+.play-box img{
+    width:50px;
+    float:left;
+    margin-right:20px;
+}
+.uk-grid>*{
+    padding-left:0px;
+}
