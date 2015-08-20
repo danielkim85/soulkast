@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>Ashley Madison Bulk Email Checker</title>
+		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	</head>
+	<body>
+		<h1>Is your profile part of the Ashley Madison hack?</h1>
+		<p>
+		Enter your email addresses (line by line).
+		<br />
+		e.g.
+		<br />
+		cheating.wife@example.com
+		<br />
+		cheating.husband@example.com
+		</p>
+		<div>
+			<textarea id="emails" style="width:600px;height:200px;"></textarea>
+			<br />
+			<input type="button" value="Submit" id="submit" />
+		</div>
+		<br />
+		<div id="status"></div>
+		<div id="result" style="color:red;"></div>
+		<hr />
+		<p>
+			This is a wrapper service for the original <a href="https://ashley.cynic.al" target="_blank">Ashley Madison Email Checker</a>.
+			<br />
+			All credit (and blame) goes to the creator of <a href="https://ashley.cynic.al" target="_blank">Ashley Madison Email Checker</a>.
+		</p>
+
+		</div>
+		<script>
+			var emails_;
+			var next = 0;
+			function run(){
+				if(emails_.length == next){
+					$("#status").html("done.");
+					$("#submit").prop("disabled",false);
+					return;
+				}
+				//quick dirty sanity check
+				if(emails_[next] != "" && emails_[next].indexOf("@") != -1){
+					$.ajax({
+						method: "POST",
+					  	url: "test.py",
+					  	dataType: "json",
+					  	data: {email:emails_[next]},
+					  	context: document.body
+					}).done(function(json) {
+					$("#result").append("<div>" + emails_[next] + "," + json.found+ "</div>");
+						next++;
+						run();
+					}).error(function(){
+						console.info("error");
+						$("#result").append("<div>" + emails_[next] + ",Error</div>");
+						next++;
+						run();
+					});					
+				}
+				else{
+					next++;
+					run();
+				}
+			}
+
+			$(function() {
+				$("#submit").click(function(){
+					$("#status").html("Computing ... do not touch anything");
+					$(this).prop("disabled",true);
+					var emails = $("#emails").val();
+					emails_ = emails.split("\n");
+					next = 0;
+					run();
+				});
+			});
+			
+		</script
+	</body>
+</html>
