@@ -6,15 +6,16 @@ html {
 }
 h1 {
 	font-weight:normal;
-	font-size:30px;
-	line-height:35px;
+	font-size:50px;
+	line-height:55px;
 	color: white;
+	margin:0;
 }
 #main{
 	margin: auto;
 	position: absolute;
 	text-align: center;
-	height:70px;
-	width:130px;
-	top: -25px; left: 0; bottom: 0; right: 0;
+	height: 107px;
+	width: 204px;
+	top: 0; left: 0; bottom: 0; right: 0;
 }
