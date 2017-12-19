@@ -1,3 +1,10 @@
+.material-icons.md-18 {
+	font-size:18px;
+	cursor:pointer;
+}
+a{
+	color:white;
+}
 html {
 	width:100%;
 	height:100%;
@@ -18,4 +25,10 @@ h1 {
 	height: 107px;
 	width: 204px;
 	top: 0; left: 0; bottom: 0; right: 0;
+}
+#icons{
+	top:8px;
+	left:30px;
+	color:white;
+	position:absolute;
 }
